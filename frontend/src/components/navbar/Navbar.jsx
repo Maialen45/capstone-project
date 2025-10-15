@@ -33,7 +33,7 @@ function NavBar() {
 		!auth &&
 		(location.pathname === "/" ||
 			location.pathname === "/log-in" ||
-			location.pathname === "/sign-in" ||
+			location.pathname === "/sign-up" ||
 			location.pathname.startsWith("/results/"));
 
 	return (
@@ -58,7 +58,7 @@ function NavBar() {
 			<div className="right-column">
 				{!auth && (
 					<div className="navbar-buttons">
-						<NavbarButton label="Sign In" to="/sign-in" />
+						<NavbarButton label="Sign Up" to="/sign-up" />
 						<NavbarButton label="Log In" to="/log-in" />
 					</div>
 				)}

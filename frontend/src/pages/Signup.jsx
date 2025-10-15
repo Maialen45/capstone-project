@@ -6,7 +6,7 @@ import NavBar from "../components/navbar/Navbar";
 import FormAuth from "../components/auth/FormAuth";
 import FormSide from "../components/auth/FormSide";
 
-function Signin() {
+function Signup() {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -21,7 +21,7 @@ function Signin() {
 
 		axios
 			.post(
-				"http://localhost:5000/api/users/sign-in",
+				"http://localhost:5000/api/users/sign-up",
 				{
 					users_username: username,
 					users_email: email,
@@ -44,7 +44,7 @@ function Signin() {
 			})
 			.catch((error) => {
 				const errorMsg =
-					error.response?.data?.error || "Error while signin in";
+					error.response?.data?.error || "Error while signin up";
 				setError(errorMsg);
 				setMessage("");
 			});
@@ -55,11 +55,11 @@ function Signin() {
 			<NavBar />
 			<div className="auth">
 				<div className="left-column">
-					<FormSide tipo="sign-in" />
+					<FormSide tipo="sign-up" />
 				</div>
 				<div className="right-column">
 					<FormAuth
-						title="Sign In"
+						title="Sign Up"
 						showUsername={true}
 						username={username}
 						setUsername={setUsername}
@@ -67,7 +67,7 @@ function Signin() {
 						setEmail={setEmail}
 						password={password}
 						setPassword={setPassword}
-						textButton="Sign In"
+						textButton="Sign Up"
 						onSubmit={handleSubmit}
 						message={message}
 						error={error}
@@ -78,4 +78,4 @@ function Signin() {
 	);
 }
 
-export default Signin;
+export default Signup;

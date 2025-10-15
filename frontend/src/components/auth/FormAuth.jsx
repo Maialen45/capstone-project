@@ -62,7 +62,7 @@ function FormAuth({
 				) : (
 					<p>
 						Don't have an account?
-						<Link to="/sign-in"> Sign in here</Link>
+						<Link to="/sign-up"> Sign up here</Link>
 					</p>
 				)}
 			</div>

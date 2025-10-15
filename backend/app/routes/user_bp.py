@@ -8,8 +8,8 @@ from ..validators import validate_password, validate_email
 
 user_bp = Blueprint('user_bp', __name__)
 
-@user_bp.route('/api/users/sign-in', methods=['POST'])
-def sign_in():
+@user_bp.route('/api/users/sign-up', methods=['POST'])
+def sign_up():
     data = request.get_json()
 
     username = data.get('users_username')

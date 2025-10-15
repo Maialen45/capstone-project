@@ -113,7 +113,7 @@ function Results() {
 					}
 				});
 		} else {
-			navigate("/sign-in");
+			navigate("/sign-up");
 		}
 	};
 

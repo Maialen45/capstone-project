@@ -7,7 +7,7 @@ import {
 import Home from "./pages/Home";
 import Results from "./pages/Results";
 import Login from "./pages/Login";
-import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
 import ToBeRead from "./pages/ToBeRead";
 import Read from "./pages/Read";
 import PrivateRoute from "./components/auth/PrivateRoute";
@@ -19,7 +19,7 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/results/:query" element={<Results />} />
 				<Route path="/log-in" element={<Login />} />
-				<Route path="/sign-in" element={<Signin />} />
+				<Route path="/sign-up" element={<Signup />} />
 				<Route
 					path="/to-be-read"
 					element={

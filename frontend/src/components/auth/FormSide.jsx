@@ -7,7 +7,7 @@ import logo from "../../assets/logo.png";
 function FormSide({ tipo }) {
 	return (
 		<div className="form-side">
-			{tipo === "sign-in" ? (
+			{tipo === "sign-up" ? (
 				<div className="advantages-container">
 					<div className="title">Advantages of registering</div>
 					<ul>
