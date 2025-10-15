@@ -1,0 +1,281 @@
+.auth {
+	display: flex;
+	gap: 80px;
+
+	margin-right: 200px;
+	margin-left: 200px;
+	margin-top: 40px;
+
+	.left-column {
+		width: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.form-side {
+			.image-container {
+				img {
+					width: 435px;
+				}
+			}
+
+			.advantages-container {
+				.title {
+					font-weight: bold;
+					font-size: 1.5rem;
+					color: $text;
+					display: flex;
+					justify-content: center;
+					margin-bottom: 40px;
+				}
+
+				ul {
+					list-style: none;
+					padding-left: 30px;
+
+					li {
+						margin-bottom: 16px;
+					}
+
+					.check {
+						padding-right: 10px;
+					}
+				}
+			}
+		}
+	}
+
+	.right-column {
+		width: 50%;
+		display: flex;
+		justify-content: center;
+		margin-top: 40px;
+
+		.form {
+			width: 350px;
+			height: 450px;
+			margin: 0;
+			border-radius: 10px;
+			box-sizing: border-box;
+			border: 2px solid $button;
+			background-color: $secondary-background;
+			padding: 18px;
+			align-items: baseline;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			.form-title {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+
+				h2 {
+					margin-top: 16px;
+				}
+			}
+
+			.form-container {
+				width: 100%;
+
+				@include input-textarea;
+
+				button {
+					@include button;
+					margin-top: 20px;
+				}
+
+				.success-msg,
+				.error-msg {
+					color: $text;
+					font-size: 0.9rem;
+					font-weight: 600;
+					margin: 0;
+					margin-left: 5px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.auth {
+		flex-direction: column;
+		gap: 40px;
+
+		margin-right: 2rem;
+		margin-left: 2rem;
+		margin-top: 50px;
+
+		.left-column {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.form-side {
+				.image-container {
+					img {
+						width: 150px;
+					}
+				}
+
+				.advantages-container {
+					.title {
+						font-size: 1.25rem;
+					}
+
+					ul {
+						padding-left: 0;
+
+						li {
+							font-size: 0.9rem;
+						}
+					}
+				}
+			}
+		}
+
+		.right-column {
+			width: 100%;
+			margin-top: 0;
+			margin-bottom: 40px;
+
+			.form {
+				.form-title {
+					h2 {
+						font-size: 1.25rem;
+					}
+				}
+				.form-container {
+					.form-subtitle {
+						font-size: 0.9rem;
+					}
+					form {
+						input {
+							font-size: 0.9rem;
+						}
+					}
+					button {
+						font-size: 0.9rem;
+					}
+
+					.success-msg,
+					.error-msg {
+						font-size: 0.8rem;
+					}
+				}
+
+				.form-link {
+					p {
+						font-size: 0.9rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+	.auth {
+		flex-direction: column;
+		gap: 40px;
+
+		margin-right: 2rem;
+		margin-left: 2rem;
+		margin-top: 50px;
+
+		.left-column {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.form-side {
+				.image-container {
+					img {
+						width: 150px;
+					}
+				}
+
+				.advantages-container {
+					.title {
+						font-size: 1.5rem;
+					}
+
+					ul {
+						padding-left: 0;
+
+						li {
+							font-size: 1rem;
+						}
+					}
+				}
+			}
+		}
+
+		.right-column {
+			width: 100%;
+			margin-top: 0;
+			margin-bottom: 40px;
+
+			.form {
+				.form-title {
+					h2 {
+						font-size: 1.5rem;
+					}
+				}
+				.form-container {
+					.form-subtitle {
+						font-size: 1rem;
+					}
+					form {
+						input {
+							font-size: 1rem;
+						}
+					}
+					button {
+						font-size: 1rem;
+					}
+
+					.success-msg,
+					.error-msg {
+						font-size: 0.9rem;
+					}
+				}
+
+				.form-link {
+					p {
+						font-size: 1rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1560px) {
+	.auth {
+		margin-right: 100px;
+		margin-left: 100px;
+		margin-top: 40px;
+		gap: 40px;
+
+		.left-column {
+			.form-side {
+				.image-container {
+					img {
+						width: 200px;
+					}
+				}
+
+				.advantages-container {
+					ul {
+						padding-left: 0;
+					}
+				}
+			}
+		}
+	}
+}

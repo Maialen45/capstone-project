@@ -1,0 +1,335 @@
+.navbar-container {
+	height: 85px;
+	background-color: $secondary-background;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.1);
+	position: relative;
+
+	.left-column {
+		margin-left: 2rem;
+		display: flex;
+		align-items: center;
+
+		.logo {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.logo-link {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-decoration: none;
+				color: $text;
+
+				img {
+					margin: 0;
+					margin-left: 2.5rem;
+					margin-right: 2.5rem;
+					width: 60px;
+					height: 100%;
+				}
+
+				p {
+					font-weight: 600;
+				}
+			}
+		}
+
+		.navbar-links {
+			display: flex;
+			align-items: center;
+			margin-left: 2.5rem;
+
+			.navbar-link {
+				margin-right: 5rem;
+
+				& a {
+					@include link;
+				}
+			}
+		}
+	}
+
+	.right-column {
+		margin-right: 2rem;
+
+		.navbar-buttons {
+			display: flex;
+			.navbar-button {
+				margin-left: 1rem;
+				margin-right: 1rem;
+
+				& a,
+				button {
+					@include button;
+				}
+			}
+		}
+
+		.desktop-only {
+			display: flex;
+		}
+		.mobile-only {
+			display: none;
+		}
+	}
+	.mobile-menu {
+		display: none;
+	}
+}
+
+@media (max-width: 600px) {
+	.navbar-container {
+		position: relative;
+
+		.left-column {
+			margin-left: 0.5rem;
+			margin-right: 0;
+
+			.logo {
+				.logo-link {
+					img {
+						margin-left: 1rem;
+						margin-right: 1rem;
+						width: 50px;
+					}
+
+					p {
+						font-size: 0.9rem;
+					}
+				}
+			}
+			.navbar-links {
+				margin-left: 0;
+				display: none;
+			}
+		}
+
+		.right-column {
+			margin-right: 1rem;
+			.navbar-buttons {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.navbar-button {
+					margin: 0;
+
+					& a,
+					button {
+						@include button;
+						font-size: 0.9rem;
+						padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+						margin-left: 0.75rem;
+					}
+				}
+			}
+
+			.hamburger {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 35px;
+				height: 30px;
+				cursor: pointer;
+				gap: 5px;
+
+				span {
+					display: block;
+					width: 25px;
+					height: 3px;
+					background-color: $text;
+					border-radius: 2px;
+					transition: all 0.3s ease;
+				}
+			}
+		}
+
+		.mobile-menu {
+			position: absolute;
+			top: 85px;
+			right: 0;
+			width: 100%;
+			background-color: $secondary-background;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding-bottom: 0.5rem;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			transform: translateY(-200%);
+			opacity: 0;
+			transition: all 0.3s ease-in-out;
+			z-index: 1000;
+
+			&.open {
+				transform: translateY(0);
+				opacity: 1;
+			}
+
+			.navbar-link,
+			.navbar-button {
+				margin: 0.5rem 0;
+				width: 100%;
+				text-align: center;
+
+				a {
+					@include link;
+				}
+				button {
+					@include button;
+				}
+			}
+		}
+	}
+
+	.desktop-only {
+		display: none !important;
+	}
+	.mobile-only {
+		display: flex !important;
+	}
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+	.navbar-container {
+		position: relative;
+
+		.left-column {
+			margin-left: 0.5rem;
+			margin-right: 0;
+
+			.logo {
+				.logo-link {
+					img {
+						margin-left: 1rem;
+						margin-right: 1rem;
+						width: 50px;
+					}
+
+					p {
+						font-size: 1rem;
+					}
+				}
+			}
+			.navbar-links {
+				margin-left: 0;
+				display: none;
+			}
+		}
+
+		.right-column {
+			margin-right: 1rem;
+			.navbar-buttons {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.navbar-button {
+					margin: 0;
+
+					& a,
+					button {
+						@include button;
+						font-size: 1rem;
+						padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+						margin-left: 0.75rem;
+					}
+				}
+			}
+
+			.hamburger {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 35px;
+				height: 30px;
+				cursor: pointer;
+				gap: 5px;
+
+				span {
+					display: block;
+					width: 25px;
+					height: 3px;
+					background-color: $text;
+					border-radius: 2px;
+					transition: all 0.3s ease;
+				}
+			}
+		}
+
+		.mobile-menu {
+			position: absolute;
+			top: 85px;
+			right: 0;
+			width: 100%;
+			background-color: $secondary-background;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding-bottom: 0.5rem;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			transform: translateY(-200%);
+			opacity: 0;
+			transition: all 0.3s ease-in-out;
+			z-index: 1000;
+
+			&.open {
+				transform: translateY(0);
+				opacity: 1;
+			}
+
+			.navbar-link,
+			.navbar-button {
+				margin: 0.5rem 0;
+				width: 100%;
+				text-align: center;
+
+				a {
+					@include link;
+				}
+				button {
+					@include button;
+				}
+			}
+		}
+	}
+
+	.desktop-only {
+		display: none !important;
+	}
+	.mobile-only {
+		display: flex !important;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1560px) {
+	.navbar-container {
+		.left-column {
+			.navbar-links {
+				.navbar-link {
+					& a {
+						@include link;
+						font-size: 0.9rem;
+					}
+				}
+			}
+		}
+
+		.right-column {
+			.navbar-buttons {
+				.navbar-button {
+					& a,
+					button {
+						@include button;
+						font-size: 0.9rem;
+					}
+				}
+			}
+		}
+	}
+}

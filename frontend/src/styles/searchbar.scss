@@ -1,0 +1,63 @@
+.search-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 80vw;
+	max-width: 850px;
+	min-width: 310px;
+	gap: 0.5rem;
+
+	background-color: $background;
+	padding: 0.75rem 1rem;
+	border-radius: 9999px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+	margin: 0 auto;
+
+	input {
+		flex: 1;
+		border: none;
+		outline: none;
+		padding: 0.6rem 1rem;
+		font-size: 1.1rem;
+		border-radius: 9999px;
+		background: transparent;
+
+		&::placeholder {
+			color: #888;
+		}
+	}
+
+	button {
+		@include button;
+		border-radius: 9999px;
+	}
+}
+
+@media (max-width: 768px) {
+	.search-bar {
+		input {
+			padding: 0.6rem 0.5rem;
+			font-size: 0.8rem;
+		}
+
+		button {
+			font-size: 0.9rem;
+			padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+		}
+	}
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+	.search-bar {
+		input {
+			padding: 0.6rem 0.5rem;
+			font-size: 1rem;
+		}
+
+		button {
+			font-size: 1rem;
+			padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+		}
+	}
+}

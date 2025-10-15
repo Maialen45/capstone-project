@@ -1,0 +1,59 @@
+.delete-modal-overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.delete-modal-content {
+		padding: 20px;
+		background-color: #fff;
+		border-radius: 10px;
+		max-width: 500px;
+		width: 100%;
+		margin: auto;
+		position: relative;
+		box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+		z-index: 10000;
+		opacity: 1;
+
+		h2 {
+			text-align: center;
+			margin-top: 0;
+		}
+
+		.modal-actions {
+			display: flex;
+			justify-content: center;
+			gap: 20px;
+
+			button {
+				@include button;
+			}
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.delete-modal-overlay {
+		.delete-modal-content {
+			padding: 1rem;
+			max-width: 270px;
+
+			h2 {
+				font-size: 1.2rem;
+			}
+
+			.modal-actions {
+				button {
+					font-size: 0.9rem;
+				}
+			}
+		}
+	}
+}

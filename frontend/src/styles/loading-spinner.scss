@@ -1,0 +1,36 @@
+.loading-spinner {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.spinner {
+		border: 5px solid white;
+		border-top: 5px solid $button;
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		animation: spin 1s linear infinite;
+	}
+
+	.loading-text {
+		margin-top: 20px;
+		font-size: 1.2rem;
+		color: $text;
+		font-weight: bold;
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
