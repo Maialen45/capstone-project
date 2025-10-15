@@ -26,7 +26,7 @@ def create_app():
     app.config['JWT_ACCESS_COOKIE_NAME'] = 'access_token_cookie'
     app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(minutes=60)
     app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=7)
-    app.config['JWT_COOKIE_CSRF_PROTECT'] = True  
+    app.config['JWT_COOKIE_CSRF_PROTECT'] = False  
     app.config['JWT_COOKIE_SECURE'] = True
     app.config['JWT_COOKIE_SAMESITE'] = 'None'
 
