@@ -41,9 +41,5 @@ def create_app():
     app.register_blueprint(user_bp)
     app.register_blueprint(book_bp)
 
-    @app.route('/')
-    def home():
-        return "Backend is running!"
-
     return app
 
