@@ -8,6 +8,7 @@ import FormAuth from "../components/auth/FormAuth";
 import FormSide from "../components/auth/FormSide";
 
 function Login() {
+	const API_URL = process.env.REACT_APP_API_URL;
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -22,7 +23,7 @@ function Login() {
 
 		axios
 			.post(
-				"http://localhost:5000/api/users/log-in",
+				`${API_URL}/api/users/log-in`,
 				{
 					users_email: email,
 					users_password: password,

@@ -9,6 +9,7 @@ import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
 import NotesModal from "../components/NotesModal";
 
 function Read() {
+	const API_URL = process.env.REACT_APP_API_URL;
 	const [readBooks, setReadBooks] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -26,7 +27,7 @@ function Read() {
 	const fetchReadBooks = () => {
 		setIsLoading(true);
 		axios
-			.get("http://localhost:5000/api/users/profile", {
+			.get(`${API_URL}/api/users/profile`, {
 				withCredentials: true,
 			})
 			.then((response) => {
@@ -38,17 +39,14 @@ function Read() {
 				if (err.response?.status === 401) {
 					axios
 						.post(
-							"http://localhost:5000/api/users/refresh",
+							`${API_URL}/api/users/refresh`,
 							{},
 							{ withCredentials: true }
 						)
 						.then(() => {
-							return axios.get(
-								"http://localhost:5000/api/users/profile",
-								{
-									withCredentials: true,
-								}
-							);
+							return axios.get(`${API_URL}/api/users/profile`, {
+								withCredentials: true,
+							});
 						})
 						.then((response) => {
 							const readBooks = [
@@ -102,12 +100,9 @@ function Read() {
 
 	const handleDeleteBook = () => {
 		axios
-			.delete(
-				`http://localhost:5000/api/users/delete-book/${selectedBookId}`,
-				{
-					withCredentials: true,
-				}
-			)
+			.delete(`${API_URL}/api/users/delete-book/${selectedBookId}`, {
+				withCredentials: true,
+			})
 			.then((response) => {
 				const updatedReadBooks = readBooks.filter(
 					(book) => book.book_id !== selectedBookId
@@ -124,13 +119,13 @@ function Read() {
 				if (error.response?.status === 401) {
 					axios
 						.post(
-							"http://localhost:5000/api/users/refresh",
+							`${API_URL}/api/users/refresh`,
 							{},
 							{ withCredentials: true }
 						)
 						.then(() => {
 							return axios.delete(
-								`http://localhost:5000/api/users/delete-book/${selectedBookId}`,
+								`${API_URL}/api/users/delete-book/${selectedBookId}`,
 								{ withCredentials: true }
 							);
 						})

@@ -4,6 +4,7 @@ import axios from "axios";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+	const API_URL = process.env.REACT_APP_API_URL;
 	const [auth, setAuth] = useState(false);
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -12,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 		const fetchProfile = async () => {
 			try {
 				const response = await axios.get(
-					"http://localhost:5000/api/users/profile",
+					`${API_URL}/api/users/profile`,
 					{ withCredentials: true }
 				);
 				setAuth(true);
@@ -21,13 +22,13 @@ export const AuthProvider = ({ children }) => {
 				if (error.response?.status === 401) {
 					try {
 						await axios.post(
-							"http://localhost:5000/api/users/refresh",
+							`${API_URL}/api/users/profile`,
 							{},
 							{ withCredentials: true }
 						);
 
 						const refreshedResponse = await axios.get(
-							"http://localhost:5000/api/users/profile",
+							`${API_URL}/api/users/profile`,
 							{ withCredentials: true }
 						);
 
@@ -38,7 +39,7 @@ export const AuthProvider = ({ children }) => {
 						setUser(null);
 						axios
 							.post(
-								"http://localhost:5000/api/users/log-out",
+								`${API_URL}/api/users/log-out`,
 								{},
 								{ withCredentials: true }
 							)
@@ -54,7 +55,7 @@ export const AuthProvider = ({ children }) => {
 		};
 
 		fetchProfile();
-	}, []);
+	}, [API_URL]);
 
 	return (
 		<AuthContext.Provider

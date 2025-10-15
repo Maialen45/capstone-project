@@ -9,6 +9,7 @@ import SuccessMessage from "../components/SuccessMessage";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
 
 function ToBeRead() {
+	const API_URL = process.env.REACT_APP_API_URL;
 	const [pendingBooks, setPendingBooks] = useState([]);
 	const [selectedBookId, setSelectedBookId] = useState(null);
 	const [selectedBookTitle, setSelectedBookTitle] = useState("");
@@ -20,14 +21,18 @@ function ToBeRead() {
 
 	useEffect(() => {
 		fetchPendingBooks();
-	}, []);
+	}, [API_URL]);
 
 	const fetchPendingBooks = () => {
 		setIsLoading(true);
 		axios
-			.get("http://localhost:5000/api/users/profile", {
-				withCredentials: true,
-			})
+			.get(
+				`${API_URL}/api/users/profile
+				`,
+				{
+					withCredentials: true,
+				}
+			)
 			.then((response) => {
 				const pendingBooks = [...response.data.pending_books].reverse();
 				setPendingBooks(pendingBooks);
@@ -37,17 +42,14 @@ function ToBeRead() {
 				if (err.response?.status === 401) {
 					axios
 						.post(
-							"http://localhost:5000/api/users/refresh",
+							`${API_URL}/api/users/refresh`,
 							{},
 							{ withCredentials: true }
 						)
 						.then(() => {
-							return axios.get(
-								"http://localhost:5000/api/users/profile",
-								{
-									withCredentials: true,
-								}
-							);
+							return axios.get(`${API_URL}/api/users/profile`, {
+								withCredentials: true,
+							});
 						})
 						.then((response) => {
 							const pendingBooks = [
@@ -102,7 +104,7 @@ function ToBeRead() {
 	const handleMarkAsRead = (data) => {
 		axios
 			.patch(
-				`http://localhost:5000/api/users/mark-as-read/${selectedBookId}`,
+				`${API_URL}/api/users/mark-as-read/${selectedBookId}`,
 				data,
 				{
 					withCredentials: true,
@@ -124,13 +126,13 @@ function ToBeRead() {
 				if (err.response?.status === 401) {
 					axios
 						.post(
-							"http://localhost:5000/api/users/refresh",
+							`${API_URL}/api/users/refresh`,
 							{},
 							{ withCredentials: true }
 						)
 						.then(() => {
 							return axios.patch(
-								`http://localhost:5000/api/users/mark-as-read/${selectedBookId}`,
+								`${API_URL}/api/users/mark-as-read/${selectedBookId}`,
 								data,
 								{ withCredentials: true }
 							);
@@ -157,12 +159,9 @@ function ToBeRead() {
 
 	const handleDeleteBook = () => {
 		axios
-			.delete(
-				`http://localhost:5000/api/users/delete-book/${selectedBookId}`,
-				{
-					withCredentials: true,
-				}
-			)
+			.delete(`${API_URL}/api/users/delete-book/${selectedBookId}`, {
+				withCredentials: true,
+			})
 			.then((response) => {
 				const updatedPendingBooks = pendingBooks.filter(
 					(book) => book.book_id !== selectedBookId
@@ -179,13 +178,13 @@ function ToBeRead() {
 				if (error.response?.status === 401) {
 					axios
 						.post(
-							"http://localhost:5000/api/users/refresh",
+							`${API_URL}/api/users/refresh`,
 							{},
 							{ withCredentials: true }
 						)
 						.then(() => {
 							return axios.delete(
-								`http://localhost:5000/api/users/delete-book/${selectedBookId}`,
+								`${API_URL}/api/users/delete-book/${selectedBookId}`,
 								{ withCredentials: true }
 							);
 						})

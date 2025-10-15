@@ -7,6 +7,7 @@ import FormAuth from "../components/auth/FormAuth";
 import FormSide from "../components/auth/FormSide";
 
 function Signup() {
+	const API_URL = process.env.REACT_APP_API_URL;
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -21,7 +22,7 @@ function Signup() {
 
 		axios
 			.post(
-				"http://localhost:5000/api/users/sign-up",
+				`${API_URL}/api/users/sign-up`,
 				{
 					users_username: username,
 					users_email: email,

@@ -8,6 +8,7 @@ import { AuthContext } from "../auth/AuthContext";
 import logo from "../../assets/logo2.png";
 
 function NavBar() {
+	const API_URL = process.env.REACT_APP_API_URL;
 	const { auth, setAuth, setUser } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -16,7 +17,7 @@ function NavBar() {
 	const handleLogOut = async () => {
 		try {
 			await axios.post(
-				"http://localhost:5000/api/users/log-out",
+				`${API_URL}/api/users/log-out`,
 				{},
 				{ withCredentials: true }
 			);

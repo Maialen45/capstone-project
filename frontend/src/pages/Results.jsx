@@ -10,6 +10,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import SuccessMessage from "../components/SuccessMessage";
 
 function Results() {
+	const API_URL = process.env.REACT_APP_API_URL;
 	const { query } = useParams();
 	const [results, setResults] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +27,7 @@ function Results() {
 		}
 
 		axios
-			.get("http://localhost:5000/search", {
+			.get(`${API_URL}/search`, {
 				params: { q: query },
 			})
 			.then((res) => {
@@ -64,7 +65,7 @@ function Results() {
 
 		if (auth) {
 			axios
-				.post("http://localhost:5000/api/users/add-book", payload, {
+				.post(`${API_URL}/api/users/add-book`, payload, {
 					withCredentials: true,
 				})
 				.then((response) => {
@@ -78,13 +79,13 @@ function Results() {
 					if (error.response?.status === 401) {
 						axios
 							.post(
-								"http://localhost:5000/api/users/refresh",
+								`${API_URL}/api/users/refresh`,
 								{},
 								{ withCredentials: true }
 							)
 							.then(() => {
 								return axios.post(
-									"http://localhost:5000/api/users/add-book",
+									`${API_URL}/api/users/add-book`,
 									payload,
 									{ withCredentials: true }
 								);
@@ -97,7 +98,7 @@ function Results() {
 									5000
 								);
 							})
-							.catch((refreshErr) => {
+							.catch(() => {
 								setMessage(
 									"Your session has expired. Please log in again."
 								);
