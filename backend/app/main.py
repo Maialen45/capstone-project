@@ -18,8 +18,15 @@ DATABASE_URL = os.getenv('DATABASE_URL')
 
 def create_app():
     app = Flask(__name__)
-    CORS(app, resources={r"/*": {"origins": "https://booknest-ipng.onrender.com"}}, supports_credentials=True)
-    
+    CORS(app, resources={
+        r"/*": {
+            "origins": [
+                "https://booknest-ipng.onrender.com",
+                "http://localhost:3000",
+            ]
+        }
+    }, supports_credentials=True)   
+
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
     app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
     app.config['JWT_TOKEN_LOCATION'] = ['cookies']
